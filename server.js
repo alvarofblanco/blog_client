@@ -1,12 +1,18 @@
 const express = require('express');
-const debug = require('debug')('app')
+const morgan = require('morgan');
+const debug = require('debug')('app');
+
+const indexRouter = require('./src/routes/indexRouter');
+const postRouter = require('./src/routes/postRouter');
 
 const app = express();
 const PORT = process.env.PORT || 3333
 
-app.get('/', async (req, res) => {
-  res.send('Docker changes')
-})
+// MIDDLEWAREs
+app.use(morgan('dev'));
+
+app.use('/', indexRouter);
+app.use('/post', postRouter)
 
 app.listen(PORT, () => {
   debug(`App listening on port: ${PORT}`);
