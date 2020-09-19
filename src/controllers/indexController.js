@@ -1,20 +1,20 @@
 const getIndex = (req, res) => {
   res.render('pages/index');
-}
+};
 
 const getAbout = (req, res) => {
   res.render('pages/about');
-}
+};
 
 const getPost = (req, res) => {
-  res.render('pages/post')
-}
+  res.render('pages/post');
+};
 
 const getContact = (req, res) => {
-  res.render('pages/contact')
-}
+  res.render('pages/contact');
+};
 
-const indexController = {}
+const indexController = {};
 
 indexController.getIndex = getIndex;
 indexController.getAbout = getAbout;

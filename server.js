@@ -1,19 +1,23 @@
 const express = require('express');
 const morgan = require('morgan');
 const debug = require('debug')('app');
-const path = require('path')
+const path = require('path');
+const helmet = require('helmet');
 
 const indexRouter = require('./src/routes/indexRouter');
 const postRouter = require('./src/routes/postRouter');
 
 const app = express();
-const PORT = process.env.PORT || 3333
+const PORT = process.env.PORT || 3333;
 
 // MIDDLEWAREs
+// logger
 app.use(morgan('dev'));
+// sets up security headers
+app.use(helmet());
 
 app.use('/', indexRouter);
-app.use('/post', postRouter)
+app.use('/post', postRouter);
 
 // Sirve los archivos estaticos
 app.use(express.static(path.join(__dirname, '/public')));
@@ -25,4 +29,4 @@ app.set('views', './public/views');
 
 app.listen(PORT, () => {
   debug(`App listening on port: ${PORT}`);
-})
+});

@@ -1,6 +1,6 @@
 const getPost = (req, res) => {
-  res.send('this is the posts page')
-}
+  res.send('this is the posts page');
+};
 
 const postController = {};
 postController.getPost = getPost;
